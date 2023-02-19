@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
     res.render('contacts', {title: 'Welcome to the Contacts Page!', contacts: data});
 });
 
-/* GET contact_add */
+/* GET contacts_add */
 router.get('/add', function(req, res, next) {
     res.render('contacts_add', { title: 'Create a new contact'});
 });
@@ -38,7 +38,7 @@ router.post('/add',
     }
 });
 
-/* GET contact-single */
+/* GET contacts_single */
 router.get('/:id', function(req, res, next) {
     const contact = contactsRepo.findByID(req.params.id);
     if(contact) {
@@ -49,16 +49,22 @@ router.get('/:id', function(req, res, next) {
     }
   });
 
-  /* GET contact_delete */
+  /* GET contacts_delete */
 router.get('/:id/delete', function(req, res, next) {
     const contact = contactsRepo.findByID(req.params.id);
     res.render('contacts_delete', { title: 'Delete Contact', contact: contact});
 });
 
-/* POST contact_delete */
+/* POST contacts_delete */
 router.post('/:id/delete', function(req, res, next) {
     contactsRepo.deleteByID(req.params.id);
     res.redirect('/contacts')
+});
+
+/* GET contacts_edit */
+router.get('/:id/edit', function(req, res, next) {
+    const contact = contactsRepo.findByID(req.params.id);
+    res.render('contacts_edit', { title: 'Edit Contact', contact: contact});
 });
 
 module.exports = router;
