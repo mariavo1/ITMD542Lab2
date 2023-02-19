@@ -8,20 +8,21 @@ block content
             a(href='/contacts/add')
                 button(type=button, class="button") Add Contact 
             if contacts.length > 0
-                table 
-                    thead
-                        tr
-                            th First Name
-                            th Last Name
-                            th Email
-                            th Actions
-                tbody
-                    each value in contacts
-                        tr
-                            td= value.firstName
-                            td= value.lastName  
-                            td= value.email
-                            td
-                                a(href=`/contacts/${value.id}`)= 'View Contact'
-                                a(href=`/contacts/${value.id}/edit`)= 'Edit Contact'
-                                a(href=`/contacts/${value.id}/delete`)= 'Delete Contact'
+                div(class="tableContent")
+                    table 
+                        thead
+                            tr
+                                th First Name
+                                th Last Name
+                                th Email
+                                th Actions
+                    tbody
+                        each value in contacts
+                            tr
+                                td= value.firstName
+                                td= value.lastName  
+                                td= value.email
+                                td
+                                    a(href=`/contacts/${value.id}`)= 'View Contact'
+                                    a(href=`/contacts/${value.id}/edit`)= 'Edit Contact'
+                                    a(href=`/contacts/${value.id}/delete`)= 'Delete Contact'
