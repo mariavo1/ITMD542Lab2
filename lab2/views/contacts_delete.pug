@@ -4,7 +4,7 @@ block content
     h1= title
     p Delete contact?
 
-    form(method='POST', action='/contacts/add')
+    form(method='POST', action=`/contacts/${contact.id}/delete`)
         div
             div
                 label(for="id") Contact ID
