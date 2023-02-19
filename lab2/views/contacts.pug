@@ -1,0 +1,23 @@
+extends layout 
+
+block content
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    h1= title
+        p Create your contact here
+        a(href='/contacts/add')
+            button(type=button) Add Contact 
+        if contacts.length > 0
+            table 
+                thead
+                    tr
+                        th First Name
+                        th Last Name
+                        th Email
+                        th Actions
+            tbody
+                each value in contacts
+                    tr
+                        td= value.firstName
+                        td= value.lastName  
+                        td= value.email
