@@ -1,0 +1,22 @@
+extends layout 
+
+block content
+  body
+    h1= title
+        p Viewing single contact 
+
+    form
+        div 
+            label(for="firstName") First Name 
+            input(type="text", name="firstName", disabled, id="firstName", value= contact.firstName)
+        div 
+            label(for="lastName") Last Name 
+            input(type="text", name="lastName", disabled, id="lastName", value= contact.lastName)
+        div 
+            label(for="email") Email
+            input(type="email", name="firstName", disabled, id="email", value= contact.email)
+        div 
+            label(for="notes") Notes
+            textarea(name="notes", disabled, id="notes", rows="3")= contact.notes
+        
+        a(href='/contacts/') Back
