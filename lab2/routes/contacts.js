@@ -16,9 +16,9 @@ router.get('/add', function(req, res, next) {
 
 /* Create contact */
 router.post('/add',
-    body('firstName').trim().notEmpty().withMessage('Cannot be empty!'),
-    body('lastName').trim().notEmpty().withMessage('Cannot be empty!'),
-    body('email').trim().notEmpty().withMessage('Cannot be empty!').isEmail().withMessage('Please enter a valid email address!'),
+    body('firstName').trim().notEmpty().withMessage('First Name cannot be empty'),
+    body('lastName').trim().notEmpty().withMessage('Last Name cannot be empty'),
+    body('email').trim().notEmpty().withMessage('Email cannot be empty!').isEmail().withMessage('Please enter a valid email address!'),
     body('notes').trim(),
     function(req, res, next) {
 
@@ -69,9 +69,9 @@ router.get('/:id/edit', function(req, res, next) {
 
 /* POST contacts_edit */
 router.post('/:id/edit',
-    body('firstName').trim().notEmpty().withMessage('Cannot be empty!'),
-    body('lastName').trim().notEmpty().withMessage('Cannot be empty!'),
-    body('email').trim().notEmpty().withMessage('Cannot be empty!').isEmail().withMessage('Please enter a valid email address!'),
+    body('firstName').trim().notEmpty().withMessage('First Name cannot be empty'),
+    body('lastName').trim().notEmpty().withMessage('Last Name cannot be empty'),
+    body('email').trim().notEmpty().withMessage('Email cannot be empty').isEmail().withMessage('Please enter a valid email address!'),
     body('notes').trim(),
     function(req, res, next) {
 
