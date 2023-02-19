@@ -67,4 +67,15 @@ router.get('/:id/edit', function(req, res, next) {
     res.render('contacts_edit', { title: 'Edit Contact', contact: contact});
 });
 
+/* POST contacts_edit */
+router.post('/:id/edit',
+    body('firstName').trim().notEmpty().withMessage('Cannot be empty!'),
+    body('lastName').trim().notEmpty().withMessage('Cannot be empty!'),
+    body('email').trim().notEmpty().withMessage('Cannot be empty!').isEmail().withMessage('Please enter a valid email address!'),
+    body('notes').trim(),
+    function(req, res, next) {
+
+
+});
+
 module.exports = router;
