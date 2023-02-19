@@ -75,7 +75,24 @@ router.post('/:id/edit',
     body('notes').trim(),
     function(req, res, next) {
 
+    const result = validationResult(req);
+    if (result.isEmpty() != true){
+        const contact = contactsRepo.findByID(req.params.id);
+        res.render('contacts_edit', { title: 'Edit Contact', contact: contact, message: result.array() })
+    }
+    else{
+        const contact = contactsRepo.findByID(req.params.id);
+        const updatedContact = {
+            id: req.params.id,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            notes: req.body.notes,
 
+        };
+        contactsRepo.update(updatedContact);
+        res.redirect('/contacts');
+    }
 });
 
 module.exports = router;
