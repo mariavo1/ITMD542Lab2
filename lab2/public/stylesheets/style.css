@@ -29,6 +29,7 @@ h1 {
   border: none;
   border-radius: 8px;
   margin-top: 10px;
+  margin-right: 10px;
  }
  
 .form {
@@ -37,6 +38,8 @@ h1 {
   max-width: 800px;
   background-color: #D3D3D3;
   margin: auto;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 form {
@@ -69,4 +72,12 @@ textarea {
   border: 0;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius: 5px;
+  margin: 10px 0;
+  width: 50%;
+  line-height: 1.5;
+  overflow: auto;
+}
+
+#note {
+  margin-right: 20px;
 }

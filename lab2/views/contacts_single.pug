@@ -5,7 +5,6 @@ block content
 body
     h1= title
         p Viewing single contact 
-
     form
         div
             label(for="id") Contact ID
@@ -20,7 +19,7 @@ body
             label(for="email") Email
             input(type="email", name="firstName", disabled, id="email", value= contact.email)
         div 
-            label(for="notes") Notes
+            label(for="notes", id="note") Notes
             textarea(name="notes", disabled, id="notes", rows="3")= contact.notes
         
         a(href='/contacts/') Back
