@@ -20,3 +20,7 @@ block content
                         td= value.firstName
                         td= value.lastName  
                         td= value.email
+                        td
+                            a(href=`/contacts/${value.id}`)= 'View Contact '
+                            a(href=`/contacts/${value.id}/edit`)= 'Edit Contact '
+                            a(href=`/contacts/${value.id}/delete`)= 'Delete Contact'
