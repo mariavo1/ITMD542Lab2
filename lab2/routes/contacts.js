@@ -14,7 +14,7 @@ router.get('/add', function(req, res, next) {
     res.render('contacts_add', { title: 'Create a new contact'});
 });
 
-/* POST - Create contact */
+/* Create contact */
 router.post('/add',
     body('firstName').trim().notEmpty().withMessage('Cannot be empty!'),
     body('lastName').trim().notEmpty().withMessage('Cannot be empty!'),
@@ -37,5 +37,16 @@ router.post('/add',
         res.redirect('/contacts');
     }
 });
+
+/* GET contact-single */
+router.get('/:id', function(req, res, next) {
+    const contact = contactsRepo.findByID(req.params.id);
+    if(contact) {
+        res.render('contacts_single', {title: 'Contacts', contact: contact});
+    }
+    else {
+        res.redirect('/error')
+    }
+  });
 
 module.exports = router;
