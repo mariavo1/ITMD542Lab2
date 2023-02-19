@@ -6,6 +6,9 @@ block content
         p Viewing single contact 
 
     form
+        div
+            label(for="id") Contact ID
+            input(type="text", name="id", disabled, id="id", value= contact.id)
         div 
             label(for="firstName") First Name 
             input(type="text", name="firstName", disabled, id="firstName", value= contact.firstName)
