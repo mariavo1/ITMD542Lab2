@@ -49,4 +49,11 @@ router.get('/:id', function(req, res, next) {
     }
   });
 
+  /* GET contact_delete */
+router.get('/:id/delete', function(req, res, next) {
+    const contact = contactsRepo.findByID(req.params.id);
+    res.render('contacts_delete', { title: 'Delete Contact', contact: contact});
+});
+
+
 module.exports = router;
