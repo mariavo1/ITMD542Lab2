@@ -21,6 +21,6 @@ block content
                         td= value.lastName  
                         td= value.email
                         td
-                            a(href=`/contacts/${value.id}`)= 'View Contact '
-                            a(href=`/contacts/${value.id}/edit`)= 'Edit Contact '
-                            a(href=`/contacts/${value.id}/delete`)= 'Delete Contact'
+                            a(href=`/contacts/${value.id}`, class="btn btn-primary")= 'View Contact '
+                            a(href=`/contacts/${value.id}/edit`, class="btn btn-primary")= 'Edit Contact '
+                            a(href=`/contacts/${value.id}/delete`, class="btn btn-primary")= 'Delete Contact'
