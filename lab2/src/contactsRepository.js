@@ -17,7 +17,7 @@ const loadData = () => {
 };
 
 const repo = {
-    findAll: () => Array.from(database.values()),
+    findAll: () => Array.from(db.values()),
     findByID: (id) => db.get(id),
     create: (contacts) => {
         const newContact = {
