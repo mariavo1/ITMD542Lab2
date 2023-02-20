@@ -5,24 +5,25 @@ block content
     h1= title
     p Delete contact?
 
-    form(method='POST', action=`/contacts/${contact.id}/delete`)
-        div
+    div(class="form")
+        form(method='POST', action=`/contacts/${contact.id}/delete`)
             div
-                label(for="id") Contact ID
-                input(type="text", name="id", disabled, id="id", value= contact.id)
-            div 
-                label(for="firstName") First Name 
-                input(type="text", name="firstName", disabled, id="firstName", value= contact.firstName)
-            div 
-                label(for="lastName") Last Name 
-                input(type="text", name="lastName", disabled, id="lastName", value= contact.lastName)
-            div 
-                label(for="email") Email
-                input(type="email", name="firstName", disabled, id="email", value= contact.email)
-            div 
-                label(for="notes") Notes
-                textarea(name="notes", disabled, id="notes", rows="3")= contact.notes
-            
-            
-            button(type="submit") Submit
-            a(href='/contacts/') Cancel
+                div
+                    label(for="id") Contact ID
+                    input(type="text", name="id", disabled, id="id", value= contact.id)
+                div 
+                    label(for="firstName") First Name 
+                    input(type="text", name="firstName", disabled, id="firstName", value= contact.firstName)
+                div 
+                    label(for="lastName") Last Name 
+                    input(type="text", name="lastName", disabled, id="lastName", value= contact.lastName)
+                div 
+                    label(for="email") Email
+                    input(type="email", name="firstName", disabled, id="email", value= contact.email)
+                div 
+                    label(for="notes") Notes
+                    textarea(name="notes", disabled, id="notes", rows="3")= contact.notes
+                
+                
+                button(type="submit", class="button") Submit
+                a(href='/contacts/', id="cancel") Cancel
