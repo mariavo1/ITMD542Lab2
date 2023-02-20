@@ -9,21 +9,22 @@ block content
                 ul
                     each value in message
                         li=value.msg
-
+            
+        div(class="form")
             form(method='POST', action=`/contacts/${contact.id}/edit`)
-                div
-                    div
+                div(class="tableContent")
+                    div(class="tableItem")
                         label(for="firstName") First Name
                         input(type="text", required, name="firstName" id="firstName", value=contact.firstName)
-                    div
+                    div(class="tableItem")
                         label(for="lastName") Last Name
                         input(type="text", required, name="lastName", id="lastName", value=contact.lastName)
-                    div
+                    div(class="tableItem")
                         label(for="email") Email
                         input(type="email", required, name="email", id="email", value=contact.email)
-                    div
+                    div(class="tableItem")
                         label(for="notes") Notes
                         textarea(id="notes", name="notes", rows="3", placeholder='Notes - Can be blank')= contact.notes
-                    
-                    button(type="submit") Update
-                    a(href='/contacts/') Cancel
+                        
+                    button(type="submit", class="button") Update
+                    a(href='/contacts/', id="cancel") Cancel

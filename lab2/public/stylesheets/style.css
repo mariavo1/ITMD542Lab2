@@ -137,4 +137,7 @@ td {
 #delete {
   color: #e61e10
 }
-  
+
+.tableItem {
+  margin: 5px;
+}
