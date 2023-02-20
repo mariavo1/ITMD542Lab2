@@ -1,13 +1,14 @@
 extends layout 
 
 block content
-  body
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    body
     h1= title
         p Edit your contact
             if message
                 ul
                     each value in message
-                    li=value.msg
+                        li=value.msg
 
             form(method='POST', action=`/contacts/${contact.id}/edit`)
                 div

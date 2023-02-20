@@ -31,6 +31,7 @@ h1 {
   border-radius: 8px;
   margin-top: 10px;
   margin-right: 10px;
+  margin-bottom: 10px;
  }
  
 .form {
@@ -92,3 +93,48 @@ textarea {
   border-radius: 8px;
   font-size: 14px;
 }
+
+.tableContent {
+  max-width: 800px;
+  height: 400px;
+  background-color: #D3D3D3;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+thead th {
+  width: 35%;
+}
+
+th {
+  font-size: 18px;
+  padding: 5px;
+  border: 1px solid;
+}
+
+td {
+  font-size: 14px;
+  padding: 5px;
+  font-weight: normal;
+  border: 1px solid;
+}
+
+.actions {
+  text-decoration: none;
+  padding: 2px;
+}
+
+#view {
+  color: #ebe30c;
+}
+
+#edit {
+  color: #0c69eb;
+}
+
+#delete {
+  color: #e61e10
+}
+  

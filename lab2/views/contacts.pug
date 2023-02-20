@@ -16,13 +16,12 @@ block content
                                 th Last Name
                                 th Email
                                 th Actions
-                    tbody
-                        each value in contacts
-                            tr
-                                td= value.firstName
-                                td= value.lastName  
-                                td= value.email
-                                td
-                                    a(href=`/contacts/${value.id}`)= 'View Contact'
-                                    a(href=`/contacts/${value.id}/edit`)= 'Edit Contact'
-                                    a(href=`/contacts/${value.id}/delete`)= 'Delete Contact'
+                            each value in contacts
+                                tr
+                                    td= value.firstName
+                                    td= value.lastName  
+                                    td= value.email
+                                    td
+                                        a(href=`/contacts/${value.id}`, class="actions", id="view")= 'View'
+                                        a(href=`/contacts/${value.id}/edit`, class="actions", id="edit")= 'Edit'
+                                        a(href=`/contacts/${value.id}/delete`, class="actions", id="delete")= 'Delete'
