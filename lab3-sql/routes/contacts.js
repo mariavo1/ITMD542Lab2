@@ -28,10 +28,8 @@ router.get('/:id', contactsController.contacts_single);
 router.post('/:id/delete', contactsController.contacts_post_delete);
 
 /* GET contacts_edit */
-router.get('/:id/edit', function(req, res, next) {
-    const contact = contactsRepo.findByID(req.params.id);
-    res.render('contacts_edit', { title: 'Edit Contact', contact: contact});
-});
+router.get('/:id/edit', contactsController.contacts_get_edit);
+
 
 /* POST contacts_edit */
 router.post('/:id/edit',
