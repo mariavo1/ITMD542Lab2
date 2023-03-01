@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    h1= title
+    p Please enter your information below 
+        if message 
+            ul 
+                each value in message 
+                    li=value.msg 
+
+    div(class="form")
+        form(method='POST', action='/contacts/add')
+            div(class="tableContent")
+                div(class="tableItem")
+                    label(for="firstName") First Name 
+                    input(type="text", required, name="firstName", placeholder="First Name")
+                div(class="tableItem")    
+                    label(for="firstName") Last Name 
+                    input(type="text", required, name="lastName", placeholder="Last Name")
+                div(class="tableItem")    
+                    label(for="email") Email
+                    input(type="email", required, name="email", placeholder="Email")
+                div(class="tableItem")    
+                    label(for="notes", id="note") Notes
+                    textarea(name="notes", rows="3" placeholder="Notes")
+                
+                button(type="submit", class="button") Submit
+                a(href='/contacts/', id="cancel") Cancel
+
+

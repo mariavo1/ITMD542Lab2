@@ -1,0 +1,28 @@
+extends layout 
+
+block content
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        h1= title
+            p This lab will allow a user to create and modify a contact database.
+            p Create your contact here
+            a(href='/contacts/add')
+                button(type=button, class="button") Add Contact 
+            if contacts.length > 0
+                div(class="tableContent")
+                    table 
+                        thead
+                            tr
+                                th First Name
+                                th Last Name
+                                th Email
+                                th Actions
+                            each value in contacts
+                                tr
+                                    td= value.firstName
+                                    td= value.lastName  
+                                    td= value.email
+                                    td
+                                        a(href=`/contacts/${value.id}`, class="actions", id="view")= 'View'
+                                        a(href=`/contacts/${value.id}/edit`, class="actions", id="edit")= 'Edit'
+                                        a(href=`/contacts/${value.id}/delete`, class="actions", id="delete")= 'Delete'
