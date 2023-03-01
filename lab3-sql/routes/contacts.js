@@ -14,23 +14,7 @@ router.post('/add',
     body('lastName').trim().notEmpty().withMessage('Last Name cannot be empty'),
     body('email').trim().notEmpty().withMessage('Email cannot be empty!').isEmail().withMessage('Please enter a valid email address!'),
     body('notes').trim(),
-    function(req, res, next) {
-
-    const result = validationResult(req);
-    if (result.isEmpty() != true){
-        res.render('contacts_add', { title: 'Create a new contact', message: result.array() })
-    }
-    else{
-        contactsRepo.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            notes: req.body.notes,
-        });
-
-        res.redirect('/contacts');
-    }
-});
+    contactsController.contacts_add_post);
 
 /* GET contacts_single */
 router.get('/:id', function(req, res, next) {
