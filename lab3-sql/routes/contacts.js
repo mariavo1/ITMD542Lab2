@@ -21,10 +21,8 @@ router.get('/:id', contactsController.contacts_single);
 
 
   /* GET contacts_delete */
-router.get('/:id/delete', function(req, res, next) {
-    const contact = contactsRepo.findByID(req.params.id);
-    res.render('contacts_delete', { title: 'Delete Contact', contact: contact});
-});
+  router.get('/:id/delete', contactsController.contacts_get_delete);
+
 
 /* POST contacts_delete */
 router.post('/:id/delete', function(req, res, next) {
