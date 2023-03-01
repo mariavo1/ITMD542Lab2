@@ -48,3 +48,18 @@ exports.contacts_get_edit = function(req, res, next) {
     const contact = contactsSQLRepository.findByID(req.params.id);
     res.render('contacts_edit', { title: 'Edit Contact', contact: contact});
 };
+
+exports.contacts_post_edit = function(req, res, next) {
+  
+    const result = validationResult(req);
+    if (result.isEmpty() != true){
+        const contact = contactsSQLRepository.findByID(req.params.id);
+        res.render('contacts_edit', { title: 'Edit Contact', contact: contact, message: result.array() })
+    }
+    else{
+        //const contact = contactsSQLRepository.findByID(req.params.id);
+        const updatedContact = new Contact(req.params.id, req.body.first_name, req.body.last_name, req.body.email, req.body.notes);
+        contactsSQLRepository.update(updatedContact);
+        res.redirect('/contacts');
+    }
+};
