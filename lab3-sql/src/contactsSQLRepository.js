@@ -8,19 +8,6 @@ const db = new sqlite(path.join(__dirname, '../data/contacts.sqlite'), {verbose:
 const createTable = db.prepare("CREATE TABLE IF NOT EXISTS CONTACTS (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT NOT NULL, last_name TEXT NOT NULL, email TEXT NOT NULL, notes TEXT)");
 createTable.run();
 
-// const saveData = () => {
-//     const stringifyData = JSON.stringify(Array.from(db));
-//     fs.writeFileSync(path.join(__dirname, '../data/contacts.json'), stringifyData);
-// };
-
-// const loadData = () => {
-//     const fileData = fs.readFileSync(path.join(__dirname, '../data/contacts.json'));
-//     const contactsArray = JSON.parse(fileData);
-//     contactsArray.forEach(element => {
-//         db.set(element[0], element[1]);
-//     });
-// };
-
 const repo = {
     findAll: () => {
         const stmt = db.prepare("SELECT * FROM contacts");
@@ -29,17 +16,24 @@ const repo = {
         rows.forEach((row) => {
             const contact = new Contact(row.id, first_name, row.last_name, row.email, row.notes);
             contacts.push(contact);
-        })
+        });
+        return contacts;
     },
-    findByID: (id) => db.get(id),
+    findByID: (id) => {
+        const stmt = db.prepare("SELECT * FROM contacts WHERE id = ?");
+        const row = stmt.get(uuid);
+        return new Contact(row.id, row.firstName, row.lastName, row.email, row.notes);
+    },
     create: (contacts) => {
-        const newContact = {
+            const stmt = db.prepare("INSERT INTO contacts (firstName, lastName, email, notes, date) VALUES (?, ?, ?, ?, ? )");
+            const info = stmt.run(contact.firstName, contact.lastName, contact.email, contact.notes);
+            console.log(`Contact created with id: ${info.lastInsertRowid}`);
             // id: crypto.randomUUID(),
             // firstName: contacts.firstName,
             // lastName: contacts.lastName,
             // email: contacts.email,
             // notes: contacts.notes,
-        };
+        },
 
         // db.set(newContact.id, newContact);
         // saveData();
