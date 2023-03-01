@@ -38,3 +38,8 @@ exports.contacts_single = function(req, res, next) {
     const contact = contactsSQLRepository.findByID(req.params.id);
     res.render('contacts_delete', { title: 'Delete Contact', contact: contact});
 };
+
+exports.contacts_post_delete = function(req, res, next) {
+    contactsSQLRepository.deleteByID(req.params.id);
+    res.redirect('/contacts')
+};
