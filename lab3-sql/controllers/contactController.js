@@ -23,3 +23,13 @@ exports.contacts_add_post = function(req, res, next) {
       res.redirect('/contacts');
     }
 };
+
+exports.contacts_single = function(req, res, next) {
+    const contact = contactsSQLRepository.findByID(req.params.id);
+    if(contact) {
+        res.render('contacts_single', {title: 'Contacts', contact: contact});
+    }
+    else {
+        res.redirect('/error')
+    }
+  };
