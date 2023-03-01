@@ -18,7 +18,7 @@ exports.contacts_add_post = function(req, res, next) {
         res.render('contacts_add', { title: 'Create a new contact', message: result.array() })
     }
     else{
-      const newContact = new Contact('', req.body.first_name, req.body.last_name, req.body.email, req.body.notes, '');
+      const newContact = new Contact('', req.body.firstName, req.body.lastName, req.body.email, req.body.notes, '');
       contactsSQLRepository.create(newContact);
       res.redirect('/contacts');
     }
@@ -58,7 +58,7 @@ exports.contacts_post_edit = function(req, res, next) {
     }
     else{
         //const contact = contactsSQLRepository.findByID(req.params.id);
-        const updatedContact = new Contact(req.params.id, req.body.first_name, req.body.last_name, req.body.email, req.body.notes);
+        const updatedContact = new Contact(req.params.id, req.body.firstName, req.body.lastName, req.body.email, req.body.notes);
         contactsSQLRepository.update(updatedContact);
         res.redirect('/contacts');
     }
