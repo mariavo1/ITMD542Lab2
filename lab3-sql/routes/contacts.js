@@ -17,15 +17,8 @@ router.post('/add',
     contactsController.contacts_add_post);
 
 /* GET contacts_single */
-router.get('/:id', function(req, res, next) {
-    const contact = contactsRepo.findByID(req.params.id);
-    if(contact) {
-        res.render('contacts_single', {title: 'Contacts', contact: contact});
-    }
-    else {
-        res.redirect('/error')
-    }
-  });
+router.get('/:id', contactsController.contacts_single);
+
 
   /* GET contacts_delete */
 router.get('/:id/delete', function(req, res, next) {
