@@ -35,8 +35,9 @@ const repo = {
         console.log(`Deleted contact: ${info.lastInsertRowid}`);
     },
     update: (contact) => {
-        // db.set(contact.id, contact);
-        // saveData();
+        const stmt = db.prepare("UPDATE contacts SET first_name = ?, last_name = ?, email = ?, notes = ? WHERE id = ?");
+        const info = stmt.run(contacts.first_name, contacts.last_name, contacts.email, contacts.notes, contacts.id);
+        console.log(`Updated contact: ${info.changes}`);
     },
 };
 
