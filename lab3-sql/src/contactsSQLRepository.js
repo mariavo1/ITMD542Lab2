@@ -28,19 +28,11 @@ const repo = {
             const stmt = db.prepare("INSERT INTO contacts (firstName, lastName, email, notes, date) VALUES (?, ?, ?, ?, ? )");
             const info = stmt.run(contact.firstName, contact.lastName, contact.email, contact.notes);
             console.log(`Contact created with id: ${info.lastInsertRowid}`);
-            // id: crypto.randomUUID(),
-            // firstName: contacts.firstName,
-            // lastName: contacts.lastName,
-            // email: contacts.email,
-            // notes: contacts.notes,
         },
-
-        // db.set(newContact.id, newContact);
-        // saveData();
-    },
     deleteByID: (id) => {
-        // db.delete(id);
-        // saveData();
+        const stmt = db.prepare("DELETE FROM contacts WHERE id = ?");
+        const info = stmt.run(uuid);
+        console.log(`Deleted contact: ${info.lastInsertRowid}`);
     },
     update: (contact) => {
         // db.set(contact.id, contact);
