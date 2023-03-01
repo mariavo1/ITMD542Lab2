@@ -4,11 +4,11 @@ const contactsRepo = require ('../src/contactsRepository');
 const { body, validationResult } = require ('express-validator');
 
 /* GET find all */
-router.get('/', function(req, res, next) {
-    const data = contactsRepo.findAll();
-    res.render('contacts', {title: 'Welcome to the Contacts Page!', contacts: data});
-});
-
+// router.get('/', function(req, res, next) {
+//     const data = contactsRepo.findAll();
+//     res.render('contacts', {title: 'Welcome to the Contacts Page!', contacts: data});
+// });
+router.get('/', contactsController.contacts_list);
 /* GET contacts_add */
 router.get('/add', function(req, res, next) {
     res.render('contacts_add', { title: 'Create a new contact'});
