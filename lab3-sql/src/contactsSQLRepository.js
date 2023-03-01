@@ -6,7 +6,7 @@ const Contact = require('./Contact');
 
 const db = new betterSqlite3(path.join(__dirname, '../data/contacts.sqlite'), {verbose: console.log});
 
-const createTable = db.prepare("CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT, lastName TEXT, email TEXT, notes TEXT)");
+const createTable = db.prepare("CREATE TABLE IF NOT EXISTS CONTACTS (id INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT NOT NULL, lastName TEXT NOT NULL, email TEXT NOT NULL, notes TEXT)");
 createTable.run();
 
 const repo = {
@@ -26,7 +26,7 @@ const repo = {
         return new Contact(row.id, row.firstName, row.lastName, row.email, row.notes);
     },
     create: (contact) => {
-            const stmt = db.prepare("INSERT INTO contacts (firstName, lastName, email, notes, date) VALUES (?, ?, ?, ?, ? )");
+            const stmt = db.prepare("INSERT INTO contacts (firstName, lastName, email, notes) VALUES (?, ?, ?, ?)");
             const info = stmt.run(contact.firstName, contact.lastName, contact.email, contact.notes);
             console.log(`Contact created with id: ${info.lastInsertRowid}`);
         },
