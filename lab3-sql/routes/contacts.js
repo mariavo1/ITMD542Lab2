@@ -37,26 +37,6 @@ router.post('/:id/edit',
     body('lastName').trim().notEmpty().withMessage('Last Name cannot be empty'),
     body('email').trim().notEmpty().withMessage('Email cannot be empty').isEmail().withMessage('Please enter a valid email address!'),
     body('notes').trim(),
-    function(req, res, next) {
-
-    const result = validationResult(req);
-    if (result.isEmpty() != true){
-        const contact = contactsRepo.findByID(req.params.id);
-        res.render('contacts_edit', { title: 'Edit Contact', contact: contact, message: result.array() })
-    }
-    else{
-        const contact = contactsRepo.findByID(req.params.id);
-        const updatedContact = {
-            id: req.params.id,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            notes: req.body.notes,
-
-        };
-        contactsRepo.update(updatedContact);
-        res.redirect('/contacts');
-    }
-});
+    contactsController.contacts_post_edit);
 
 module.exports = router;
