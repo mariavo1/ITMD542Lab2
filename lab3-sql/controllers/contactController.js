@@ -43,3 +43,8 @@ exports.contacts_post_delete = function(req, res, next) {
     contactsSQLRepository.deleteByID(req.params.id);
     res.redirect('/contacts')
 };
+
+exports.contacts_get_edit = function(req, res, next) {
+    const contact = contactsSQLRepository.findByID(req.params.id);
+    res.render('contacts_edit', { title: 'Edit Contact', contact: contact});
+};
