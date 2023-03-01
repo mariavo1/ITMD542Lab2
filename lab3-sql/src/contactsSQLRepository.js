@@ -22,7 +22,15 @@ createTable.run();
 // };
 
 const repo = {
-    findAll: () => Array.from(db.values()),
+    findAll: () => {
+        const stmt = db.prepare("SELECT * FROM contacts");
+        const rows = stmt.all();
+        let contacts = [];
+        rows.forEach((row) => {
+            const contact = new Contact(row.id, first_name, row.last_name, row.email, row.notes);
+            contacts.push(contact);
+        })
+    },
     findByID: (id) => db.get(id),
     create: (contacts) => {
         const newContact = {
