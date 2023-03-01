@@ -2,10 +2,11 @@ const betterSqlite3 = require('better-sqlite3');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
+const Contact = require('./Contact');
 
-const db = new sqlite(path.join(__dirname, '../data/contacts.sqlite'), {verbose: console.log});
+const db = new betterSqlite3(path.join(__dirname, '../data/contacts.sqlite'), {verbose: console.log});
 
-const createTable = db.prepare("CREATE TABLE IF NOT EXISTS CONTACTS (id INTEGER PRIMARY KEY AUTOINCREMENT, first_name TEXT NOT NULL, last_name TEXT NOT NULL, email TEXT NOT NULL, notes TEXT)");
+const createTable = db.prepare("CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT, lastName TEXT, email TEXT, notes TEXT)");
 createTable.run();
 
 const repo = {
@@ -19,22 +20,22 @@ const repo = {
         });
         return contacts;
     },
-    findByID: (id) => {
+    findByID: (uuid) => {
         const stmt = db.prepare("SELECT * FROM contacts WHERE id = ?");
         const row = stmt.get(uuid);
         return new Contact(row.id, row.firstName, row.lastName, row.email, row.notes);
     },
-    create: (contacts) => {
+    create: (contact) => {
             const stmt = db.prepare("INSERT INTO contacts (firstName, lastName, email, notes, date) VALUES (?, ?, ?, ?, ? )");
             const info = stmt.run(contact.firstName, contact.lastName, contact.email, contact.notes);
             console.log(`Contact created with id: ${info.lastInsertRowid}`);
         },
-    deleteByID: (id) => {
+    deleteByID: (uuid) => {
         const stmt = db.prepare("DELETE FROM contacts WHERE id = ?");
         const info = stmt.run(uuid);
         console.log(`Deleted contact: ${info.lastInsertRowid}`);
     },
-    update: (contact) => {
+    update: (contacts) => {
         const stmt = db.prepare("UPDATE contacts SET first_name = ?, last_name = ?, email = ?, notes = ? WHERE id = ?");
         const info = stmt.run(contacts.first_name, contacts.last_name, contacts.email, contacts.notes, contacts.id);
         console.log(`Updated contact: ${info.changes}`);

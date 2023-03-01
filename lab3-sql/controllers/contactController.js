@@ -12,7 +12,6 @@ exports.contacts_list = function(req, res, next) {
 };
 
 exports.contacts_add_post = function(req, res, next) {
-  
     const result = validationResult(req);
     if (result.isEmpty() != true){
         res.render('contacts_add', { title: 'Create a new contact', message: result.array() })
