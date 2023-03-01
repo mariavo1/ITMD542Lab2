@@ -15,7 +15,7 @@ const repo = {
         const rows = stmt.all();
         let contacts = [];
         rows.forEach((row) => {
-            const contact = new Contact(row.id, firstName, row.lastName, row.email, row.notes);
+            const contact = new Contact(row.id, row.firstName, row.lastName, row.email, row.notes);
             contacts.push(contact);
         });
         return contacts;
@@ -35,9 +35,9 @@ const repo = {
         const info = stmt.run(uuid);
         console.log(`Deleted contact: ${info.lastInsertRowid}`);
     },
-    update: (contacts) => {
+    update: (contact) => {
         const stmt = db.prepare("UPDATE contacts SET first_name = ?, last_name = ?, email = ?, notes = ? WHERE id = ?");
-        const info = stmt.run(contacts.firstName, contacts.lastName, contacts.email, contacts.notes, contacts.id);
+        const info = stmt.run(contact.firstName, contact.lastName, contact.email, contact.notes, contact.id);
         console.log(`Updated contact: ${info.changes}`);
     },
 };
