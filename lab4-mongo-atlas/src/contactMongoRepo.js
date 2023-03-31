@@ -20,7 +20,7 @@ run()
       const cursor = contactColl.find({});
       await cursor.forEach(row => {
         console.log(row)
-        const contact = new Contact(row._id.toString(), row.firstName, row.lastName, row.emailAddress, row.notes, row.currentDate);
+        const contact = new Contact(row._id.toString(), row.firstName, row.lastName, row.email, row.notes);
         contacts.push(contact);
       });
       return contacts;
@@ -33,11 +33,11 @@ run()
         };
         const row = await contactColl.findOne(filter);
         console.log(row);
-        return new Contact(row._id.toString(), row.firstName, row.lastName, row.emailAddress, row.notes, row.currentDate);
+        return new Contact(row._id.toString(), row.firstName, row.lastName, row.email, row.notes);
     },
 
     create: async (contact) => {
-        const row = {firstName: contact.firstName, lastName: contact.lastName, emailAddress: contact.emailAddress, notes: contact.notes, currentDate: contact.currentDate};
+        const row = {firstName: contact.firstName, lastName: contact.lastName, email: contact.email, notes: contact.notes};
         const contactColl = client.db('lab4').collection('contacts');
         const result = await contactColl.insertOne(row);
         console.log(`A contact was inserted with the _id: ${result.insertedId}`);
