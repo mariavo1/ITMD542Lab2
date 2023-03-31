@@ -7,5 +7,4 @@ class Contact{
         this.notes = notes;
     }
 }
-
 module.exports = Contact;
