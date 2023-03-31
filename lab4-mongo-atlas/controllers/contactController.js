@@ -18,7 +18,7 @@ exports.contacts_add_post = async function(req, res, next) {
     }
     else{
       const newContact = new Contact('', req.body.firstName, req.body.lastName, req.body.email, req.body.notes, '');
-      contactsRepository.create(newContact);
+      await contactsRepository.create(newContact);
       res.redirect('/contacts');
     }
 };
