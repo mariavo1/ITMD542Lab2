@@ -2,17 +2,12 @@ var express = require('express');
 var router = express.Router();
 const contactsRepo = require ('../src/contactsRepository');
 const { body, validationResult } = require ('express-validator');
+const contactController = require('../controllers/contactController')
 
-/* GET find all */
-router.get('/', function(req, res, next) {
-    const data = contactsRepo.findAll();
-    res.render('contacts', {title: 'Welcome to the Contacts Page!', contacts: data});
-});
-
+router.get('/', contactController.contacts_list);
 /* GET contacts_add */
-router.get('/add', function(req, res, next) {
-    res.render('contacts_add', { title: 'Create a new contact'});
-});
+router.get('/add', contactController.contacts_add_get);
+
 
 /* Create contact */
 router.post('/add',
@@ -20,52 +15,22 @@ router.post('/add',
     body('lastName').trim().notEmpty().withMessage('Last Name cannot be empty'),
     body('email').trim().notEmpty().withMessage('Email cannot be empty!').isEmail().withMessage('Please enter a valid email address!'),
     body('notes').trim(),
-    function(req, res, next) {
-
-    const result = validationResult(req);
-    if (result.isEmpty() != true){
-        res.render('contacts_add', { title: 'Create a new contact', message: result.array() })
-    }
-    else{
-        contactsRepo.create({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            notes: req.body.notes,
-        });
-
-        res.redirect('/contacts');
-    }
-});
+    contactController.contacts_add_post);
 
 /* GET contacts_single */
-router.get('/:id', function(req, res, next) {
-    const contact = contactsRepo.findByID(req.params.id);
-    if(contact) {
-        res.render('contacts_single', {title: 'Contacts', contact: contact});
-    }
-    else {
-        res.redirect('/error')
-    }
-  });
+router.get('/:id', contactController.contacts_single);
+
 
   /* GET contacts_delete */
-router.get('/:id/delete', function(req, res, next) {
-    const contact = contactsRepo.findByID(req.params.id);
-    res.render('contacts_delete', { title: 'Delete Contact', contact: contact});
-});
+  router.get('/:id/delete', contactController.contacts_get_delete);
+
 
 /* POST contacts_delete */
-router.post('/:id/delete', function(req, res, next) {
-    contactsRepo.deleteByID(req.params.id);
-    res.redirect('/contacts')
-});
+router.post('/:id/delete', contactController.contacts_post_delete);
 
 /* GET contacts_edit */
-router.get('/:id/edit', function(req, res, next) {
-    const contact = contactsRepo.findByID(req.params.id);
-    res.render('contacts_edit', { title: 'Edit Contact', contact: contact});
-});
+router.get('/:id/edit', contactController.contacts_get_edit);
+
 
 /* POST contacts_edit */
 router.post('/:id/edit',
@@ -73,26 +38,6 @@ router.post('/:id/edit',
     body('lastName').trim().notEmpty().withMessage('Last Name cannot be empty'),
     body('email').trim().notEmpty().withMessage('Email cannot be empty').isEmail().withMessage('Please enter a valid email address!'),
     body('notes').trim(),
-    function(req, res, next) {
-
-    const result = validationResult(req);
-    if (result.isEmpty() != true){
-        const contact = contactsRepo.findByID(req.params.id);
-        res.render('contacts_edit', { title: 'Edit Contact', contact: contact, message: result.array() })
-    }
-    else{
-        const contact = contactsRepo.findByID(req.params.id);
-        const updatedContact = {
-            id: req.params.id,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            notes: req.body.notes,
-
-        };
-        contactsRepo.update(updatedContact);
-        res.redirect('/contacts');
-    }
-});
+    contactController.contacts_post_edit);
 
 module.exports = router;
