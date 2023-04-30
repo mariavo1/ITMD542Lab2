@@ -9,7 +9,7 @@ const User = require('./models/User');
 const session = require('express-session');
 const passport = require('passport');
 
-mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@lab4.1oiiw06.mongodb.net/finalauth?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@lab4.1oiiw06.mongodb.net/final?retryWrites=true&w=majority`)
 .then(() => {
   console.log('Database connection successful.');
 })
