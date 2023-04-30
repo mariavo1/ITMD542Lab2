@@ -26,7 +26,7 @@ run()
       return employees;
     },
 
-    findById: async (uuid) => {
+    findByID: async (uuid) => {
         const employeeColl = client.db('final').collection('employees');
         const filter = {
           '_id': new ObjectId(uuid)
