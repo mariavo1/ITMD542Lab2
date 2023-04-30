@@ -1,0 +1,28 @@
+extends layout 
+
+block content
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    body
+        h1= title
+            p This lab will allow a user to create and modify employees that require further investigation.
+            p Create your list here
+            a(href='/employees/add')
+                button(type=button, class="button") Add Employee 
+            if employees.length > 0
+                div(class="tableContent")
+                    table 
+                        thead
+                            tr
+                                th First Name
+                                th Last Name
+                                th Email
+                                th Actions
+                            each value in employees
+                                tr
+                                    td= value.firstName
+                                    td= value.lastName  
+                                    td= value.email
+                                    td
+                                        a(href=`/employees/${value.id}`, class="actions", id="view")= 'View'
+                                        a(href=`/employees/${value.id}/edit`, class="actions", id="edit")= 'Edit'
+                                        a(href=`/employees/${value.id}/delete`, class="actions", id="delete")= 'Delete'

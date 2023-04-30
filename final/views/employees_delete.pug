@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    h1= title
+    p Delete Employee?
+
+    div(class="form")
+        form(method='POST', action=`/employees/${employee.id}/delete`)
+            div
+                div
+                    label(for="id") Employee ID
+                    input(type="text", name="id", disabled, id="id", value= employee.id)
+                div 
+                    label(for="firstName") First Name 
+                    input(type="text", name="firstName", disabled, id="firstName", value= employee.firstName)
+                div 
+                    label(for="lastName") Last Name 
+                    input(type="text", name="lastName", disabled, id="lastName", value= employee.lastName)
+                div 
+                    label(for="email") Email
+                    input(type="email", name="firstName", disabled, id="email", value= employee.email)
+                div 
+                    label(for="notes") Notes
+                    textarea(name="notes", disabled, id="notes", rows="3")= employee.notes
+                
+                
+                button(type="submit", class="button") Submit
+                a(href='/employees/', id="cancel") Cancel
