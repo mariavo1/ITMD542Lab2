@@ -38,7 +38,7 @@ run()
 
     create: async (employee) => {
         const row = {firstName: employee.firstName, lastName: employee.lastName, email: employee.email, notes: employee.notes};
-        const cemployeeColl = client.db('final').collection('employees');
+        const employeeColl = client.db('final').collection('employees');
         const result = await employeeColl.insertOne(row);
         console.log(`An cemployee was inserted with the _id: ${result.insertedId}`);
     },

@@ -4,17 +4,17 @@ const Employee = require('../src/Employee');
 
 exports.employees_list = async function(req, res, next) {
     const data = await employeesRepository.findAll();
-    res.render('employees', {title: 'Contacts', employees: data});
+    res.render('employees', {title: 'Employee needing further follow-up evaluation', employees: data});
   };
 
   exports.employees_add_get = async function(req, res, next) {
-    res.render('employees_add', { title: 'Create a new contact'});
+    res.render('employees_add', { title: 'Insert new employee'});
 };
 
 exports.employees_add_post = async function(req, res, next) {
     const result = validationResult(req);
     if (result.isEmpty() != true){
-        res.render('employees_add', { title: 'Create a new contact', message: result.array() })
+        res.render('employees_add', { title: 'Insert new employee', message: result.array() })
     }
     else{
       const newEmployee = new Employee('', req.body.firstName, req.body.lastName, req.body.email, req.body.notes, '');
