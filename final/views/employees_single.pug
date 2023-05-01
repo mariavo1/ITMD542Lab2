@@ -5,24 +5,25 @@ block content
     h1= title
     p Viewing single employee 
     
-        form
-            div
-                label(for="id") Employee Code
-                input(type="text", name="id", disabled, id="id", value= employee.id)
-            div
-                label(for="idNum") Employee ID
-                input(type="text", name="idNum", disabled, id="idNum", value= employee.idNum)
-            div 
-                label(for="firstName") First Name 
-                input(type="text", name="firstName", disabled, id="firstName", value= employee.firstName)
-            div 
-                label(for="lastName") Last Name 
-                input(type="text", name="lastName", disabled, id="lastName", value= employee.lastName)
-            div 
-                label(for="department") Department
-                input(type="text", name="department", disabled, id="department", value= employee.department)
-            div 
-                label(for="notes", id="note") Notes
-                textarea(name="notes", disabled, id="notes", rows="3")= employee.notes
-            
-            a(href='/employees/') Back
+        div(class="form") 
+            form
+                div
+                    label(for="id") Employee Code
+                    input(type="text", name="id", disabled, id="id", value= employee.id)
+                div
+                    label(for="idNum") Employee ID
+                    input(type="text", name="idNum", disabled, id="idNum", value= employee.idNum)
+                div 
+                    label(for="firstName") First Name 
+                    input(type="text", name="firstName", disabled, id="firstName", value= employee.firstName)
+                div 
+                    label(for="lastName") Last Name 
+                    input(type="text", name="lastName", disabled, id="lastName", value= employee.lastName)
+                div 
+                    label(for="department") Department
+                    input(type="text", name="department", disabled, id="department", value= employee.department)
+                div 
+                    label(for="notes", id="note") Notes
+                    textarea(name="notes", disabled, id="notes", rows="3")= employee.notes
+                
+                a(href='/employees/', id="cancel") Back
