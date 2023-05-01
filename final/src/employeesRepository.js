@@ -22,6 +22,7 @@ const repo = {
     create: (employees) => {
         const newEmployee = {
             id: crypto.randomUUID(),
+            idNum: employees.idNum,
             firstName: employees.firstName,
             lastName: employees.lastName,
             email: employees.email,

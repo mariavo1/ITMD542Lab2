@@ -1,6 +1,7 @@
 class Employee{
-    constructor(id, firstName, lastName, email, notes) {
+    constructor(id, idNum, firstName, lastName, email, notes) {
         this.id = id;
+        this.idNum = idNum;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

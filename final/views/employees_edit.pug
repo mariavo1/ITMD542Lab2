@@ -14,6 +14,9 @@ block content
             form(method='POST', action=`/employees/${employee.id}/edit`)
                 div(class="tableContent")
                     div(class="tableItem")
+                        label(for="idNum") Employee ID
+                        input(type="text", required, name="idNum" id="idNum", value=employee.idNum)
+                    div(class="tableItem")
                         label(for="firstName") First Name
                         input(type="text", required, name="firstName" id="firstName", value=employee.firstName)
                     div(class="tableItem")
@@ -24,7 +27,7 @@ block content
                         input(type="email", required, name="email", id="email", value=employee.email)
                     div(class="tableItem")
                         label(for="notes") Notes
-                        textarea(id="notes", name="notes", rows="3", placeholder='Notes - Can be blank')= employee.notes
+                        textarea(id="notes", name="notes", rows="3", placeholder='Reason(s)')= employee.notes
                         
                     button(type="submit", class="button") Update
                     a(href='/employees/', id="cancel") Cancel

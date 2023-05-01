@@ -9,8 +9,8 @@ block content
         form(method='POST', action=`/employees/${employee.id}/delete`)
             div
                 div
-                    label(for="id") Employee ID
-                    input(type="text", name="id", disabled, id="id", value= employee.id)
+                    label(for="idNum") Employee Code
+                    input(type="text", name="idNum", disabled, id="idNum", value= employee.id)
                 div 
                     label(for="firstName") First Name 
                     input(type="text", name="firstName", disabled, id="firstName", value= employee.firstName)

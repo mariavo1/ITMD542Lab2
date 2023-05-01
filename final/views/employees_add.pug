@@ -13,6 +13,9 @@ block content
         form(method='POST', action='/employees/add')
             div(class="tableContent")
                 div(class="tableItem")
+                    label(for="idNum") Employee ID
+                    input(type="text", required, name="idNum", placeholder="ID Number")
+                div(class="tableItem")
                     label(for="firstName") First Name 
                     input(type="text", required, name="firstName", placeholder="First Name")
                 div(class="tableItem")    
@@ -23,7 +26,7 @@ block content
                     input(type="email", required, name="email", placeholder="Email")
                 div(class="tableItem")    
                     label(for="notes", id="note") Notes
-                    textarea(name="notes", rows="3" placeholder="Notes")
+                    textarea(name="notes", rows="3" placeholder="Reason(s)")
                 
                 button(type="submit", class="button") Submit
                 a(href='/employees/', id="cancel") Cancel

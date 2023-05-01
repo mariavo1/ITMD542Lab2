@@ -13,15 +13,19 @@ block content
                     table 
                         thead
                             tr
+                                th ID #
                                 th First Name
                                 th Last Name
                                 th Email
+                                th Reason
                                 th Actions
                             each value in employees
                                 tr
+                                    td= value.idNum
                                     td= value.firstName
                                     td= value.lastName  
                                     td= value.email
+                                    td= value.note
                                     td
                                         a(href=`/employees/${value.id}`, class="actions", id="view")= 'View'
                                         a(href=`/employees/${value.id}/edit`, class="actions", id="edit")= 'Edit'

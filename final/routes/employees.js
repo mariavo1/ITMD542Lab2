@@ -11,6 +11,7 @@ router.get('/add', employeeController.employees_add_get);
 
 /* Create employee */
 router.post('/add',
+    body('idNum').trim().notEmpty().withMessage('Employee number cannot be empty!'),
     body('firstName').trim().notEmpty().withMessage('First Name cannot be empty'),
     body('lastName').trim().notEmpty().withMessage('Last Name cannot be empty'),
     body('email').trim().notEmpty().withMessage('Email cannot be empty!').isEmail().withMessage('Please enter a valid email address!'),
@@ -34,6 +35,7 @@ router.get('/:id/edit', employeeController.employees_get_edit);
 
 /* POST contacts_edit */
 router.post('/:id/edit',
+    body('idNum').trim().notEmpty().withMessage('Employee number cannot be empty!'),
     body('firstName').trim().notEmpty().withMessage('First Name cannot be empty'),
     body('lastName').trim().notEmpty().withMessage('Last Name cannot be empty'),
     body('email').trim().notEmpty().withMessage('Email cannot be empty').isEmail().withMessage('Please enter a valid email address!'),

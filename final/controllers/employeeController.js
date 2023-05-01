@@ -17,7 +17,7 @@ exports.employees_add_post = async function(req, res, next) {
         res.render('employees_add', { title: 'Insert new employee', message: result.array() })
     }
     else{
-      const newEmployee = new Employee('', req.body.firstName, req.body.lastName, req.body.email, req.body.notes, '');
+      const newEmployee = new Employee('', req.body.idNum, req.body.firstName, req.body.lastName, req.body.email, req.body.notes, '');
       await employeesRepository.create(newEmployee);
       res.redirect('/employees');
     }
@@ -56,7 +56,7 @@ exports.employees_post_edit = async function(req, res, next) {
         res.render('employees_edit', { title: 'Edit Employee', employee: employee, message: result.array() })
     }
     else{
-        const updatedEmployee = new Employee(req.params.id, req.body.firstName, req.body.lastName, req.body.email, req.body.notes);
+        const updatedEmployee = new Employee(req.params.id, req.body.idNum, req.body.firstName, req.body.lastName, req.body.email, req.body.notes);
         await employeesRepository.update(updatedEmployee);
         res.redirect('/employees');
     }
