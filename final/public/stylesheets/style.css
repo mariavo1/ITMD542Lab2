@@ -67,7 +67,16 @@ input[type=email] {
   border: 0;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
   border-radius: 5px;
-  width: 50%;
+  width: 25%;
+}
+
+input[type=password] {
+  padding: 5px;
+  margin: 10px 5px;
+  border: 0;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  border-radius: 5px;
+  width: 25%;
 }
 
 textarea {
@@ -87,6 +96,7 @@ textarea {
 #notes {
   margin-left: 30px;
 }
+
 #cancel {
   text-decoration: none;
   background-color: #e61e10;
@@ -95,6 +105,44 @@ textarea {
   padding: 5px 60px;
   border-radius: 8px;
   font-size: 14px;
+}
+
+.signup {
+  text-decoration: none;
+  background-color: #cf66f2;
+  cursor: pointer;
+  color: white;
+  padding: 5px 60px;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 30%;
+  margin: 10px auto;
+}
+
+.google {
+  text-decoration: none;
+  background-color: #669ef2;
+  cursor: pointer;
+  color: white;
+  padding: 5px 60px;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 30%;
+  margin: 10px auto;
+}
+
+.signin {
+  text-decoration: none;
+  background-color:  #20d666;
+  cursor: pointer;
+  color: white;
+  padding: 5px 60px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin: 10px;
+  border: none;
+  width: 30%;
+  margin: 10px auto;
 }
 
 .tableContent {
