@@ -5,7 +5,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #fcaedb;
+  background-color: #f5bc42;
 }
 
 a {
@@ -127,7 +127,7 @@ td {
 }
 
 #view {
-  color: #ebe30c;
+  color: #18db3c;
 }
 
 #edit {

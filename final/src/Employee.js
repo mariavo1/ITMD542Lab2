@@ -1,10 +1,10 @@
 class Employee{
-    constructor(id, idNum, firstName, lastName, email, notes) {
+    constructor(id, idNum, firstName, lastName, department, notes) {
         this.id = id;
         this.idNum = idNum;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.department = department;
         this.notes = notes;
     }
 }

@@ -23,8 +23,8 @@ block content
                         label(for="lastName") Last Name
                         input(type="text", required, name="lastName", id="lastName", value=employee.lastName)
                     div(class="tableItem")
-                        label(for="email") Email
-                        input(type="email", required, name="email", id="email", value=employee.email)
+                        label(for="department") Department
+                        input(type="text", required, name="department", id="department", value=employee.department)
                     div(class="tableItem")
                         label(for="notes") Notes
                         textarea(id="notes", name="notes", rows="3", placeholder='Reason(s)')= employee.notes

@@ -25,7 +25,7 @@ const repo = {
             idNum: employees.idNum,
             firstName: employees.firstName,
             lastName: employees.lastName,
-            email: employees.email,
+            department: employees.department,
             notes: employees.notes,
         };
 

@@ -16,7 +16,7 @@ block content
                                 th ID #
                                 th First Name
                                 th Last Name
-                                th Email
+                                th Department
                                 th Reason
                                 th Actions
                             each value in employees
@@ -24,7 +24,7 @@ block content
                                     td= value.idNum
                                     td= value.firstName
                                     td= value.lastName  
-                                    td= value.email
+                                    td= value.department
                                     td= value.notes
                                     td
                                         a(href=`/employees/${value.id}`, class="actions", id="view")= 'View'

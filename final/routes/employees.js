@@ -14,7 +14,7 @@ router.post('/add',
     body('idNum').trim().notEmpty().withMessage('Employee number cannot be empty!'),
     body('firstName').trim().notEmpty().withMessage('First Name cannot be empty'),
     body('lastName').trim().notEmpty().withMessage('Last Name cannot be empty'),
-    body('email').trim().notEmpty().withMessage('Email cannot be empty!').isEmail().withMessage('Please enter a valid email address!'),
+    body('department').trim().notEmpty().withMessage('Department cannot be empty!'),
     body('notes').trim(),
     employeeController.employees_add_post);
 
@@ -38,7 +38,7 @@ router.post('/:id/edit',
     body('idNum').trim().notEmpty().withMessage('Employee number cannot be empty!'),
     body('firstName').trim().notEmpty().withMessage('First Name cannot be empty'),
     body('lastName').trim().notEmpty().withMessage('Last Name cannot be empty'),
-    body('email').trim().notEmpty().withMessage('Email cannot be empty').isEmail().withMessage('Please enter a valid email address!'),
+    body('department').trim().notEmpty().withMessage('Department cannot be empty'),
     body('notes').trim(),
     employeeController.employees_post_edit);
 
